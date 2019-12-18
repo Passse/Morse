@@ -1,0 +1,67 @@
+int a[26][4]=
+{
+  {0,1,-1,-1},
+  {1,0,0,0},
+  {1,0,1,0},
+  {1,0,0,-1},
+  {0,-1,-1,-1},
+  {0,0,1,0},
+  {1,1,0,-1},
+  {0,0,0,0},
+  {0,0,-1,-1},
+  {0,1,1,1},
+  {1,0,1,-1},
+  {0,1,0,0},
+  {1,1,-1,-1},
+  {1,0,-1,-1},
+  {1,1,1,-1},
+  {0,1,1,0},
+  {1,1,0,1},
+  {0,1,0,-1},
+  {0,0,0,-1},
+  {1,-1,-1,-1},
+  {0,0,1,-1},
+  {0,0,0,1},
+  {0,1,1,-1},
+  {1,0,0,1},
+  {1,0,1,1},
+  {1,1,0,0}
+};
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(13,OUTPUT);
+  Serial.begin(9600);
+}
+String world="S";
+void loop() {
+  int len=world.length();
+  // pt your main code here, to run repeatedly:
+  for(int i=0;i<len;i++){
+    int loc=world[i]-'A';
+    for(int j=0;j<4;j++)
+    {
+      if(a[loc][j]==1)
+      {
+//        Serial.println(loc+'A');
+        digitalWrite(13,HIGH);
+        delay(2000);
+        digitalWrite(13,LOW);
+        delay(500);
+      }
+      else if(a[loc][j]==0)
+      {
+//        Serial.println(loc+'A');
+        digitalWrite(13,HIGH);
+        delay(200);
+        digitalWrite(13,LOW);
+        delay(500);
+      }
+      else
+      {
+        break;
+      }
+    }
+  }
+  delay(2000);
+}
